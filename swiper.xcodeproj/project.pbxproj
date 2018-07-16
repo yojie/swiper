@@ -23,6 +23,11 @@
 		2963A80020F738FB004F6205 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963A7FF20F738FB004F6205 /* UIView+Extension.swift */; };
 		2966AB4720FC8AEF004D2B4D /* SWNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB4620FC8AEF004D2B4D /* SWNavigationBar.swift */; };
 		2966AB4A20FC8C08004D2B4D /* UILabel+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB4920FC8C08004D2B4D /* UILabel+Extentsion.swift */; };
+		2966AB4C20FC9939004D2B4D /* SWHomeItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB4B20FC9939004D2B4D /* SWHomeItemController.swift */; };
+		2966AB4F20FC997A004D2B4D /* SWContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB4E20FC997A004D2B4D /* SWContentModel.swift */; };
+		2966AB5220FC9B14004D2B4D /* SWUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB5120FC9B14004D2B4D /* SWUserModel.swift */; };
+		2966AB5420FC9BB8004D2B4D /* SWCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB5320FC9BB8004D2B4D /* SWCommentModel.swift */; };
+		2966AB5620FC9EF2004D2B4D /* SWContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB5520FC9EF2004D2B4D /* SWContentController.swift */; };
 		AA7DB226B26313AE07F1F5F2 /* Pods_swiperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A543823B051032E2CAAA2D /* Pods_swiperTests.framework */; };
 		D3FF43A51450BC95569EDC07 /* Pods_swiperUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052C494292CBF5A6E25EB867 /* Pods_swiperUITests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +72,11 @@
 		2963A7FF20F738FB004F6205 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		2966AB4620FC8AEF004D2B4D /* SWNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWNavigationBar.swift; sourceTree = "<group>"; };
 		2966AB4920FC8C08004D2B4D /* UILabel+Extentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extentsion.swift"; sourceTree = "<group>"; };
+		2966AB4B20FC9939004D2B4D /* SWHomeItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWHomeItemController.swift; sourceTree = "<group>"; };
+		2966AB4E20FC997A004D2B4D /* SWContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWContentModel.swift; sourceTree = "<group>"; };
+		2966AB5120FC9B14004D2B4D /* SWUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWUserModel.swift; sourceTree = "<group>"; };
+		2966AB5320FC9BB8004D2B4D /* SWCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCommentModel.swift; sourceTree = "<group>"; };
+		2966AB5520FC9EF2004D2B4D /* SWContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWContentController.swift; sourceTree = "<group>"; };
 		5369FB5A75C006F11AEE7E54 /* Pods-swiperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiperUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiperUITests/Pods-swiperUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		64A543823B051032E2CAAA2D /* Pods_swiperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81399E8CD174855849FC75B6 /* Pods-swiperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-swiperTests/Pods-swiperTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +186,7 @@
 		29533DFE20F5F912005E4B88 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2966AB5020FC9B09004D2B4D /* Model */,
 				2966AB4420FC8ACB004D2B4D /* View */,
 				29533E0020F5F963005E4B88 /* Controller */,
 				29533E0520F5FA7D005E4B88 /* Extension */,
@@ -224,6 +235,7 @@
 		29533E0920F60256005E4B88 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2966AB4D20FC9967004D2B4D /* Model */,
 				29533E0A20F6025E005E4B88 /* Controller */,
 				2963A7F720F72A45004F6205 /* View */,
 			);
@@ -234,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				29533E0B20F60271005E4B88 /* SWHomeViewController.swift */,
+				2966AB4B20FC9939004D2B4D /* SWHomeItemController.swift */,
+				2966AB5520FC9EF2004D2B4D /* SWContentController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +298,23 @@
 				2966AB4920FC8C08004D2B4D /* UILabel+Extentsion.swift */,
 			);
 			path = UILabel;
+			sourceTree = "<group>";
+		};
+		2966AB4D20FC9967004D2B4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2966AB4E20FC997A004D2B4D /* SWContentModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2966AB5020FC9B09004D2B4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2966AB5120FC9B14004D2B4D /* SWUserModel.swift */,
+				2966AB5320FC9BB8004D2B4D /* SWCommentModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		94C486E44ACFB9049C08DA90 /* Frameworks */ = {
@@ -524,15 +555,20 @@
 			files = (
 				29533E0C20F60271005E4B88 /* SWHomeViewController.swift in Sources */,
 				29533E0820F5FAA9005E4B88 /* UIColor+Common.swift in Sources */,
+				2966AB4F20FC997A004D2B4D /* SWContentModel.swift in Sources */,
 				2966AB4A20FC8C08004D2B4D /* UILabel+Extentsion.swift in Sources */,
 				29533E0420F5F9FE005E4B88 /* SWNavigationController.swift in Sources */,
 				2963A80020F738FB004F6205 /* UIView+Extension.swift in Sources */,
 				29533E1020F61134005E4B88 /* SWConst.swift in Sources */,
 				2963A7F920F72A73004F6205 /* SWHomeContentCell.swift in Sources */,
 				29533DCF20F5F8B2005E4B88 /* AppDelegate.swift in Sources */,
+				2966AB5420FC9BB8004D2B4D /* SWCommentModel.swift in Sources */,
 				2963A7FD20F72C0E004F6205 /* UIFont+Extension.swift in Sources */,
+				2966AB5220FC9B14004D2B4D /* SWUserModel.swift in Sources */,
 				29533E0220F5F971005E4B88 /* SWBaseViewController.swift in Sources */,
+				2966AB5620FC9EF2004D2B4D /* SWContentController.swift in Sources */,
 				2966AB4720FC8AEF004D2B4D /* SWNavigationBar.swift in Sources */,
+				2966AB4C20FC9939004D2B4D /* SWHomeItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
