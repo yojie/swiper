@@ -76,12 +76,22 @@ class SWHomeViewController: SWBaseViewController, UICollectionViewDelegate, UICo
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell: SWHomeContentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SWHomeContentCell", for: indexPath) as! SWHomeContentCell
 		cell.nameLabel.text = String.init(format: "index %02ld", indexPath.row)
-		Log.debug(cell.nameLabel.text)
+		cell.contentLabel.text = "3.1首页（关注/发现/达人/顾问/日记/案例）、圈子主页、所有圈子内页、活动列表、商城、添加下拉刷新机制。"
 		return cell
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: collectionView.width, height: sw_dimmerHomeCellAvatar+sw_margin*2)
+		var height = sw_dimmerHomeCellAvatar+sw_margin*2
+		
+		let string = "3.1首页（关注/发现/达人/顾问/日记/案例）、圈子主页、所有圈子内页、活动列表、商城、添加下拉刷新机制。" as NSString
+		let options: NSStringDrawingOptions = [.usesFontLeading , .usesLineFragmentOrigin]
+		let size = string.boundingRect(with: CGSize(width: collectionView.width-sw_margin*2, height: CGFloat(HUGE)),
+									   options: options,
+									   attributes: [NSAttributedStringKey.font: UIFont.contentFont()],
+									   context: nil).size
+		height += sw_margin + size.height
+		
+		return CGSize(width: collectionView.width, height: height)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

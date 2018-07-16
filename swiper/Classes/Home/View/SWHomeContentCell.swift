@@ -23,12 +23,18 @@ class SWHomeContentCell: UICollectionViewCell {
 	}()
 	
 	lazy var nameLabel: UILabel = {
-		var nameLabel = UILabel()
-		nameLabel.textColor = UIColor.textColor
+		var nameLabel = UILabel.label(ofText: nil, color: UIColor.textColor, font: UIFont.textFont())
 		nameLabel.backgroundColor = UIColor.contentBackgroundColor
 		nameLabel.textAlignment = NSTextAlignment.left
-		nameLabel.font = UIFont.textFont()
 		return nameLabel
+	}()
+	
+	lazy var contentLabel: UILabel = {
+		var contentLabel = UILabel.label(ofText: nil, color: UIColor.textColor, font: UIFont.contentFont())
+		contentLabel.textAlignment = NSTextAlignment.left
+		contentLabel.numberOfLines = 0
+		contentLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+		return contentLabel
 	}()
 	
 	// MARK: - init
@@ -49,13 +55,14 @@ class SWHomeContentCell: UICollectionViewCell {
 	// MARK: - setup
 	func sw_setup() {
 		self.sw_setupViews()
-		self.sw_setupConstraints()
+//		self.sw_setupConstraints()
 	}
 	
 	func sw_setupViews() {
 		self.contentView.backgroundColor = UIColor.contentBackgroundColor
 		self.contentView.addSubview(self.imageView)
 		self.contentView.addSubview(self.nameLabel)
+		self.contentView.addSubview(self.contentLabel)
 	}
 	
 	func sw_setupConstraints() {
@@ -71,7 +78,16 @@ class SWHomeContentCell: UICollectionViewCell {
 			make.height.equalTo(sw_dimmerHomeCellAvatar)
 		}
 	}
-    
+    // MARK: - layout
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		
+		self.imageView.frame = CGRect(x: sw_margin, y: sw_margin, width: sw_dimmerHomeCellAvatar, height: sw_dimmerHomeCellAvatar)
+		self.nameLabel.frame = CGRect(x: sw_dimmerHomeCellAvatar+sw_margin*2, y: sw_margin, width: self.width-sw_dimmerHomeCellAvatar-sw_margin*3, height: sw_dimmerHomeCellAvatar)
+		self.contentLabel.frame = CGRect(x: sw_margin, y: self.nameLabel.bottom+sw_margin, width: self.width-sw_margin*2, height: 15)
+		
+		self.contentLabel.sizeToFit()
+	}
 }
 
 

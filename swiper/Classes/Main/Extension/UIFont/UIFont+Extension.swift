@@ -20,6 +20,10 @@ extension UIFont {
 	class func textFont() -> UIFont {
 		return UIFont.sw_font(ofSize: 15.0)
 	}
+	
+	class func contentFont() -> UIFont {
+		return UIFont.sw_font(ofSize: 13.0)
+	}
 }
 
 
