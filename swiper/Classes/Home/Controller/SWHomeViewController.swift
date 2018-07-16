@@ -12,14 +12,16 @@ class SWHomeViewController: SWBaseViewController, UICollectionViewDelegate, UICo
 	
 	// MARK: - vars
 	lazy var mainCollectionView: UICollectionView = {
-		let layout = UICollectionViewLayout.init()
+		let layout = UICollectionViewFlowLayout.init()
 		var collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.showsHorizontalScrollIndicator = false
-		collectionView.backgroundColor = self.view.backgroundColor
+		collectionView.backgroundColor = UIColor.scrollViewBackgroundColor
 		collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.onDrag
 		collectionView.alwaysBounceVertical = true
+		collectionView.scrollIndicatorInsets = UIEdgeInsets.init(top: 20, left: 0, bottom: 0, right: 0)
+		collectionView.register(SWHomeContentCell.self, forCellWithReuseIdentifier: "SWHomeContentCell")
 		if #available(iOS 11.0, *) {
 			collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
 		}
@@ -64,24 +66,30 @@ class SWHomeViewController: SWBaseViewController, UICollectionViewDelegate, UICo
 	
 	// MARK: - UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
-		return 0
+		return 1
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 0
+		return 20
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+		let cell: SWHomeContentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SWHomeContentCell", for: indexPath) as! SWHomeContentCell
+		cell.nameLabel.text = String.init(format: "index %02ld", indexPath.row)
+		Log.debug(cell.nameLabel.text)
 		return cell
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize.zero
+		return CGSize(width: collectionView.width, height: sw_dimmerHomeCellAvatar+sw_margin*2)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets.zero
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
+		return 1.0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

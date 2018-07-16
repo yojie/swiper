@@ -21,12 +21,18 @@ extension UIColor {
 		return UIColor(white: 0.6, alpha: 1.0)
 	}
 	class var auxiliaryColor: UIColor {
-		return UIColor.groupTableViewBackground
+		return UIColor.darkGray
 	}
 	class var textColor: UIColor {
 		return UIColor.mainToneColor
 	}
 	class var backgroundColor: UIColor {
 		return UIColor.black
+	}
+	class var contentBackgroundColor: UIColor {
+		return UIColor(white: 0.09, alpha: 1.0)
+	}
+	class var scrollViewBackgroundColor: UIColor {
+		return UIColor(white: 0.1, alpha: 1.0)
 	}
 }
