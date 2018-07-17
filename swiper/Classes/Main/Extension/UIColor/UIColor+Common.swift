@@ -18,7 +18,7 @@ extension UIColor {
 		)
 	}
 	class var mainToneColor: UIColor {
-		return UIColor(white: 0.6, alpha: 1.0)
+		return UIColor.init(hex: 0x9d9ea1, alpha: 1.0)
 	}
 	class var auxiliaryColor: UIColor {
 		return UIColor.darkGray
@@ -30,9 +30,9 @@ extension UIColor {
 		return UIColor.black
 	}
 	class var contentBackgroundColor: UIColor {
-		return UIColor(white: 0.09, alpha: 1.0)
+		return UIColor.init(hex: 0x141414, alpha: 1.0)
 	}
 	class var scrollViewBackgroundColor: UIColor {
-		return UIColor(white: 0.1, alpha: 1.0)
+		return UIColor(white: 0.105, alpha: 1.0)
 	}
 }

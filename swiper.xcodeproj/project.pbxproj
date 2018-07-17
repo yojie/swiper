@@ -186,11 +186,11 @@
 		29533DFE20F5F912005E4B88 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				2966AB5020FC9B09004D2B4D /* Model */,
-				2966AB4420FC8ACB004D2B4D /* View */,
 				29533E0020F5F963005E4B88 /* Controller */,
 				29533E0520F5FA7D005E4B88 /* Extension */,
+				2966AB5020FC9B09004D2B4D /* Model */,
 				29533DFF20F5F917005E4B88 /* Regular */,
+				2966AB4420FC8ACB004D2B4D /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -216,10 +216,10 @@
 		29533E0520F5FA7D005E4B88 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				29533E0620F5FA85005E4B88 /* UIColor */,
+				2963A7FB20F72BFE004F6205 /* UIFont */,
 				2966AB4820FC8BF2004D2B4D /* UILabel */,
 				2963A7FE20F738E6004F6205 /* UIView */,
-				2963A7FB20F72BFE004F6205 /* UIFont */,
-				29533E0620F5FA85005E4B88 /* UIColor */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 		29533E0920F60256005E4B88 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2966AB4D20FC9967004D2B4D /* Model */,
 				29533E0A20F6025E005E4B88 /* Controller */,
+				2966AB4D20FC9967004D2B4D /* Model */,
 				2963A7F720F72A45004F6205 /* View */,
 			);
 			path = Home;

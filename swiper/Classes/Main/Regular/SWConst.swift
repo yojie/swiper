@@ -16,6 +16,7 @@ public let sw_screenScale = UIScreen.main.scale
 
 public let sw_margin: CGFloat = 15.0
 public let sw_lineHeight: CGFloat = 1.0
+public let sw_padding: CGFloat = 2.0
 
 public struct Log {
 	static func debug<T>(_ message: T, file: String = #file, function: String = #function, line: Int = #line) {

@@ -14,27 +14,33 @@ class SWHomeContentCell: UICollectionViewCell {
 	
 	// MARK: - var
 	lazy var imageView: UIImageView = {
-		var imageView = UIImageView()
+		let imageView = UIImageView()
 		imageView.contentMode = UIViewContentMode.scaleAspectFill
-		imageView.backgroundColor = UIColor.auxiliaryColor
+		imageView.backgroundColor = UIColor.textColor
 		imageView.layer.cornerRadius = sw_dimmerHomeCellAvatar*0.5
 		imageView.layer.masksToBounds = true
+		imageView.image = UIImage.init(named: "test")
 		return imageView
 	}()
 	
 	lazy var nameLabel: UILabel = {
-		var nameLabel = UILabel.label(ofText: nil, color: UIColor.textColor, font: UIFont.textFont())
+		let nameLabel = UILabel.label(ofText: nil, color: UIColor.textColor, font: UIFont.textFont())
 		nameLabel.backgroundColor = UIColor.contentBackgroundColor
 		nameLabel.textAlignment = NSTextAlignment.left
 		return nameLabel
 	}()
 	
 	lazy var contentLabel: UILabel = {
-		var contentLabel = UILabel.label(ofText: nil, color: UIColor.textColor, font: UIFont.contentFont())
+		let contentLabel = UILabel.label(ofText: nil, color: UIColor.textColor, font: UIFont.contentFont())
 		contentLabel.textAlignment = NSTextAlignment.left
 		contentLabel.numberOfLines = 0
 		contentLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
 		return contentLabel
+	}()
+	
+	lazy var itemController: SWHomeItemController = {
+		let itemController = SWHomeItemController.init()
+		return itemController
 	}()
 	
 	// MARK: - init
@@ -55,7 +61,6 @@ class SWHomeContentCell: UICollectionViewCell {
 	// MARK: - setup
 	func sw_setup() {
 		self.sw_setupViews()
-//		self.sw_setupConstraints()
 	}
 	
 	func sw_setupViews() {
@@ -63,21 +68,9 @@ class SWHomeContentCell: UICollectionViewCell {
 		self.contentView.addSubview(self.imageView)
 		self.contentView.addSubview(self.nameLabel)
 		self.contentView.addSubview(self.contentLabel)
+		self.contentView.addSubview(self.itemController.mainScrollView)
 	}
 	
-	func sw_setupConstraints() {
-		weak var wself = self
-		self.imageView.snp.makeConstraints { (make) in
-			make.size.equalTo(CGSize(width: sw_dimmerHomeCellAvatar, height: sw_dimmerHomeCellAvatar))
-			make.left.top.equalTo(sw_margin)
-		}
-		self.nameLabel.snp.makeConstraints { (make) in
-			make.top.equalTo(sw_margin)
-			make.left.equalTo((wself?.imageView.snp.right)!).offset(sw_margin)
-			make.right.equalToSuperview().offset(-sw_margin)
-			make.height.equalTo(sw_dimmerHomeCellAvatar)
-		}
-	}
     // MARK: - layout
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -87,6 +80,9 @@ class SWHomeContentCell: UICollectionViewCell {
 		self.contentLabel.frame = CGRect(x: sw_margin, y: self.nameLabel.bottom+sw_margin, width: self.width-sw_margin*2, height: 15)
 		
 		self.contentLabel.sizeToFit()
+		
+		let width = self.width-sw_margin*2
+		self.itemController.mainScrollView.frame = CGRect(x: sw_margin, y: sw_margin+self.contentLabel.bottom, width: width, height: self.height-sw_margin*2-self.contentLabel.bottom)
 	}
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-	
+	// MARK: - var
 	var x: CGFloat {
 		get {
 			return self.frame.origin.x
@@ -64,13 +64,29 @@ extension UIView {
 		}
 	}
 	
+	// MARK: - animation
 	func sw_fade() {
 		let animation = CATransition()
 		animation.type = kCATransitionFade
 		animation.duration = 0.25
 		self.layer.add(animation, forKey: "fade")
 	}
-
+	
+	// MARK: - subviews
+	func sw_removeSubviews() {
+		for subview in self.subviews {
+			subview.removeFromSuperview()
+		}
+	}
+	
+	func sw_removeSubviews(fromTag tag: Int) {
+		for subview in self.subviews {
+			guard subview.tag >= tag else {
+				continue
+			}
+			subview.removeFromSuperview()
+		}
+	}
 }
 
 
