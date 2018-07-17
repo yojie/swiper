@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SWContentController: NSObject {
+class SWContentController: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	// MARK: - var
 	var contents: Array<SWContentModel> = Array()
 	var page: Int = 0
@@ -40,6 +40,42 @@ class SWContentController: NSObject {
 		if self.callback != nil {
 			self.callback!(true)
 		}
+	}
+	
+	// MARK: - UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		return 1
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return self.contents.count
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell: SWHomeContentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SWHomeContentCell", for: indexPath) as! SWHomeContentCell
+		let model = self.contents[indexPath.row] as SWContentModel
+		cell.nameLabel.text = model.poster?.name
+		cell.contentLabel.text = model.content
+		cell.itemController.isImage = model.isImage
+		cell.itemController.items = model.medias
+		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let model = self.contents[indexPath.row] as SWContentModel
+		return CGSize(width: collectionView.width, height: model.height(fromWidth: collectionView.width))
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets.zero
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		return 1.0
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		return 0
 	}
 }
 

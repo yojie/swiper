@@ -28,6 +28,7 @@
 		2966AB5220FC9B14004D2B4D /* SWUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB5120FC9B14004D2B4D /* SWUserModel.swift */; };
 		2966AB5420FC9BB8004D2B4D /* SWCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB5320FC9BB8004D2B4D /* SWCommentModel.swift */; };
 		2966AB5620FC9EF2004D2B4D /* SWContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966AB5520FC9EF2004D2B4D /* SWContentController.swift */; };
+		296A959720FDC26800F25852 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 296A959620FDC26800F25852 /* InfoPlist.strings */; };
 		AA7DB226B26313AE07F1F5F2 /* Pods_swiperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A543823B051032E2CAAA2D /* Pods_swiperTests.framework */; };
 		D3FF43A51450BC95569EDC07 /* Pods_swiperUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052C494292CBF5A6E25EB867 /* Pods_swiperUITests.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		2966AB5120FC9B14004D2B4D /* SWUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWUserModel.swift; sourceTree = "<group>"; };
 		2966AB5320FC9BB8004D2B4D /* SWCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCommentModel.swift; sourceTree = "<group>"; };
 		2966AB5520FC9EF2004D2B4D /* SWContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWContentController.swift; sourceTree = "<group>"; };
+		296A959620FDC26800F25852 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		5369FB5A75C006F11AEE7E54 /* Pods-swiperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiperUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiperUITests/Pods-swiperUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		64A543823B051032E2CAAA2D /* Pods_swiperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81399E8CD174855849FC75B6 /* Pods-swiperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-swiperTests/Pods-swiperTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				29533DD520F5F8B2005E4B88 /* Assets.xcassets */,
 				29533DDA20F5F8B2005E4B88 /* Info.plist */,
+				296A959620FDC26800F25852 /* InfoPlist.strings */,
 				29533E0D20F603D4005E4B88 /* LaunchScreen.storyboard */,
 			);
 			path = Supportings;
@@ -453,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29533DD620F5F8B2005E4B88 /* Assets.xcassets in Resources */,
+				296A959720FDC26800F25852 /* InfoPlist.strings in Resources */,
 				29533E0E20F603D4005E4B88 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

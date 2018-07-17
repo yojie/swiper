@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SWUserModel: NSObject {
+public class SWUserModel: NSObject {
 	var avatar: String?
 	var name: String?
 }

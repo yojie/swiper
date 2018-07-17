@@ -8,14 +8,14 @@
 
 import UIKit
 
-class SWHomeViewController: SWBaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SWHomeViewController: SWBaseViewController {
 	
 	// MARK: - vars
 	lazy var mainCollectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout.init()
 		var collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
-		collectionView.delegate = self
-		collectionView.dataSource = self
+		collectionView.delegate = self.dataController
+		collectionView.dataSource = self.dataController
 		collectionView.showsHorizontalScrollIndicator = false
 		collectionView.backgroundColor = UIColor.scrollViewBackgroundColor
 		collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.onDrag
@@ -54,6 +54,8 @@ class SWHomeViewController: SWBaseViewController, UICollectionViewDelegate, UICo
 	
 	func sw_setupViews() {
 		self.view.addSubview(self.mainCollectionView)
+		
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.sw_didTapAddAction(sender:)))
 	}
 	
 	func sw_setupConstraints() {
@@ -69,46 +71,8 @@ class SWHomeViewController: SWBaseViewController, UICollectionViewDelegate, UICo
 		}
 	}
 	
-	// MARK: - UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
-	func numberOfSections(in collectionView: UICollectionView) -> Int {
-		return 1
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return self.dataController.contents.count
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell: SWHomeContentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SWHomeContentCell", for: indexPath) as! SWHomeContentCell
-		let model = self.dataController.contents[indexPath.row] as SWContentModel
-		cell.nameLabel.text = model.poster?.name
-		cell.contentLabel.text = model.content
-		cell.itemController.isImage = model.isImage
-		cell.itemController.items = model.medias
-		return cell
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let model = self.dataController.contents[indexPath.row] as SWContentModel
-		return CGSize(width: collectionView.width, height: model.height(fromWidth: collectionView.width))
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-		return UIEdgeInsets.zero
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 1.0
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
-	}
-	
-	// MARK: - fetch
-	func sw_fetch() {
-		self.dataController.fetch { (success) in
-		}
+	// MARK: - actions
+	@objc func sw_didTapAddAction(sender: Any) {
 	}
 }
 

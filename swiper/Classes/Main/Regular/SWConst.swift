@@ -29,6 +29,15 @@ public struct Log {
 	}
 }
 
+public struct User {
+	public var userInfo: SWUserModel?
+	public var isLogin: Bool {
+		get {
+			return userInfo != nil
+		}
+	}
+}
+
 
 
 
