@@ -30,8 +30,8 @@ public struct Log {
 }
 
 public struct User {
-	public var userInfo: SWUserModel?
-	public var isLogin: Bool {
+	static var userInfo: SWUserModel?
+	static var isLogin: Bool {
 		get {
 			return userInfo != nil
 		}

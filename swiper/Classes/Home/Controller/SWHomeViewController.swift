@@ -73,6 +73,8 @@ class SWHomeViewController: SWBaseViewController {
 	
 	// MARK: - actions
 	@objc func sw_didTapAddAction(sender: Any) {
+		self.sw_login { (success) in
+		}
 	}
 }
 
