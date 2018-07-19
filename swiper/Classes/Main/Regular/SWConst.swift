@@ -29,14 +29,8 @@ public struct Log {
 	}
 }
 
-public struct User {
-	static var userInfo: SWUserModel?
-	static var isLogin: Bool {
-		get {
-			return userInfo != nil
-		}
-	}
-}
+public let OAKeyUser = "OAKeyUser"
+public let Overall: SWOverall = SWOverall()
 
 
 

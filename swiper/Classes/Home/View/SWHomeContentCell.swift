@@ -19,7 +19,6 @@ class SWHomeContentCell: UICollectionViewCell {
 		imageView.backgroundColor = UIColor.textColor
 		imageView.layer.cornerRadius = sw_dimmerHomeCellAvatar*0.5
 		imageView.layer.masksToBounds = true
-		imageView.image = UIImage.init(named: "test")
 		return imageView
 	}()
 	

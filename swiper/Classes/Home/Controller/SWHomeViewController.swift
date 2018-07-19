@@ -55,7 +55,12 @@ class SWHomeViewController: SWBaseViewController {
 	func sw_setupViews() {
 		self.view.addSubview(self.mainCollectionView)
 		
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.sw_didTapAddAction(sender:)))
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.sw_didTapAddAction(sender:)))
+
+		let leftButton = UIButton.create(withImage: UIImage.image(withFileName: Overall.user.avatar!), highlight: nil, target: self, action: #selector(self.sw_didTapUserAction(sender:)))
+		leftButton.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 30.0, height: 30.0))
+		//leftButton.backgroundColor = UIColor.textColor
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
 	}
 	
 	func sw_setupConstraints() {
@@ -73,8 +78,9 @@ class SWHomeViewController: SWBaseViewController {
 	
 	// MARK: - actions
 	@objc func sw_didTapAddAction(sender: Any) {
-		self.sw_login { (success) in
-		}
+	}
+	
+	@objc func sw_didTapUserAction(sender: Any) {
 	}
 }
 

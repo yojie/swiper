@@ -47,25 +47,6 @@ class SWBaseViewController: UIViewController {
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return UIStatusBarStyle.lightContent
 	}
-	
-	// MARK: - sigin
-	public func sw_login(_ block: ((_ success: Bool) -> Void)?) {
-		guard User.isLogin == false else {
-			if block != nil {
-				block!(false)
-			}
-			return
-		}
-		weak var wself = self
-		let viewController = SWLoginViewController.createLogin { (success) in
-			wself?.navigationController?.dismiss(animated: true, completion: {
-				if block != nil {
-					block!(success)
-				}
-			})
-		}
-		self.navigationController?.present(viewController, animated: true, completion: nil)
-	}
 }
 
 
