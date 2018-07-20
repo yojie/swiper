@@ -7,6 +7,7 @@ target 'swiper' do
 
   # Pods for swiper
   pod 'SnapKit', '~> 4.0.0'
+  pod 'RealmSwift'
 
   target 'swiperTests' do
     inherit! :search_paths

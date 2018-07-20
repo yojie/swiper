@@ -52,9 +52,10 @@ extension UIImage {
 	}
 	
 	func save(toPath path: String?) -> Void {
+		let mPath = NSMutableString.init(string: Overall.imagePath)
 		let data: Data = UIImagePNGRepresentation(self)!
 		let fileMgr = FileManager.default
-		let writed = fileMgr.createFile(atPath: path!, contents: data, attributes: nil)
+		let writed = fileMgr.createFile(atPath: mPath.appendingPathComponent(path!), contents: data, attributes: nil)
 		Log.debug("writed[\(writed)]: \(path!)")
 	}
 }

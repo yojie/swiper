@@ -17,7 +17,8 @@ class SWBaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		self.view.backgroundColor = UIColor.backgroundColor
+		self.view.backgroundColor = UIColor.contentBackgroundColor
+		self.view.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +30,9 @@ class SWBaseViewController: UIViewController {
 		super.viewWillAppear(animated)
 		
 		self.title = self.mTitle
+		
+		let backBarItem = self.navigationItem.backBarButtonItem;
+		self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.plain, target: backBarItem?.target, action: backBarItem?.action);
 	}
 	
 	//MARK: - getter

@@ -58,8 +58,7 @@ class SWHomeViewController: SWBaseViewController {
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.sw_didTapAddAction(sender:)))
 
 		let leftButton = UIButton.create(withImage: UIImage.image(withFileName: Overall.user.avatar!), highlight: nil, target: self, action: #selector(self.sw_didTapUserAction(sender:)))
-		leftButton.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 30.0, height: 30.0))
-		//leftButton.backgroundColor = UIColor.textColor
+		leftButton.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 25.0, height: 25.0))
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
 	}
 	
@@ -81,6 +80,8 @@ class SWHomeViewController: SWBaseViewController {
 	}
 	
 	@objc func sw_didTapUserAction(sender: Any) {
+		let viewController = SWUserInfoViewController()
+		self.navigationController?.pushViewController(viewController, animated: true)
 	}
 }
 

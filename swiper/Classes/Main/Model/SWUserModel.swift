@@ -22,9 +22,8 @@ public class SWUserModel: NSObject, NSCoding {
 		let prefix = model.name?.prefix(upTo: (model.name?.index((model.name?.startIndex)!, offsetBy: 1))!)
 		let dimmer: CGFloat = 128.0;
 		let image = UIImage.image(fromText: prefix! as NSString, size: CGSize.init(width: dimmer, height: dimmer), backgroundColor: UIColor.textColor, textColor: UIColor.contentBackgroundColor, font: UIFont.sw_font(ofSize: dimmer*0.75))
-		let mPath = NSMutableString.init(string: Overall.imagePath)
 		model.avatar = Date.todayToString()
-		image?.save(toPath: (mPath.appendingPathComponent(model.avatar!) as String))
+		image?.save(toPath: model.avatar!)
 		model.update()
 		
 		return model
