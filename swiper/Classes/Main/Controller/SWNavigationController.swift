@@ -26,6 +26,9 @@ class SWNavigationController: UINavigationController {
 	}
 	
 	override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+		guard self.visibleViewController != nil else {
+			return .portrait
+		}
 		return (self.visibleViewController?.supportedInterfaceOrientations)!;
 	}
 	
@@ -34,6 +37,9 @@ class SWNavigationController: UINavigationController {
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
+		guard (self.visibleViewController?.isKind(of: SWBaseViewController.self))! else {
+			return .lightContent
+		}
 		return (self.visibleViewController?.preferredStatusBarStyle)!
 	}
 

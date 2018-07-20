@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SWHomeViewController: SWBaseViewController {
+class SWHomeViewController: SWBaseViewController, SWUserDelegate {
 	
 	// MARK: - vars
 	lazy var mainCollectionView: UICollectionView = {
@@ -56,7 +56,11 @@ class SWHomeViewController: SWBaseViewController {
 		self.view.addSubview(self.mainCollectionView)
 		
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.sw_didTapAddAction(sender:)))
-
+		self.sw_setupLeftButton()
+	}
+	
+	func sw_setupLeftButton() -> Void {
+		
 		let leftButton = UIButton.create(withImage: UIImage.image(withFileName: Overall.user.avatar!), highlight: nil, target: self, action: #selector(self.sw_didTapUserAction(sender:)))
 		leftButton.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 25.0, height: 25.0))
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
@@ -81,7 +85,19 @@ class SWHomeViewController: SWBaseViewController {
 	
 	@objc func sw_didTapUserAction(sender: Any) {
 		let viewController = SWUserInfoViewController()
+		viewController.delegate = self
 		self.navigationController?.pushViewController(viewController, animated: true)
+	}
+	
+	// MARK: - SWUserDelegate
+	func userAvatarDidUpdate() {
+		self.sw_setupLeftButton()
+		weak var wself = self
+		self.dataController.fetch { (success) in
+			DispatchQueue.main.async {
+				wself?.mainCollectionView.reloadData()
+			}
+		}
 	}
 }
 

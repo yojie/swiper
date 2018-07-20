@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol SWUserDelegate: NSObjectProtocol {
+	@objc optional func userAvatarDidUpdate()
+}
+
 class SWUserInfoViewController: SWBaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
 	// MARK: - var
@@ -22,6 +26,8 @@ class SWUserInfoViewController: SWBaseViewController, UIImagePickerControllerDel
 		nameLabel.textAlignment = NSTextAlignment.center
 		return nameLabel
 	}()
+	
+	var delegate: SWUserDelegate?
 
 	// MARK: - life cycle
     override func viewDidLoad() {
@@ -76,10 +82,17 @@ class SWUserInfoViewController: SWBaseViewController, UIImagePickerControllerDel
 	
 	// MARK: - UIImagePickerControllerDelegate
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		let image: UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+		var image: UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+		image = image.clipToCircle()
 		self.imageView.image = image
 		image.save(toPath: Overall.user.avatar!)
-		picker.dismiss(animated: true, completion: nil)
+		self.delegate?.userAvatarDidUpdate!()
+		self.imagePickerControllerDidCancel(picker)
+	}
+	
+	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+		picker.dismiss(animated: true) {
+		}
 	}
 	
 }

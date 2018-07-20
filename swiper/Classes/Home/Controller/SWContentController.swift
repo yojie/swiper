@@ -17,6 +17,11 @@ class SWContentController: NSObject, UICollectionViewDelegate, UICollectionViewD
 	// MARK: - init
 	override init() {
 		super.init()
+		self.sw_setup()
+	}
+	
+	// MARK: - setup
+	func sw_setup() -> Void {
 		
 		let model: SWContentModel = SWContentModel()
 		model.poster = Overall.user
@@ -24,9 +29,9 @@ class SWContentController: NSObject, UICollectionViewDelegate, UICollectionViewD
 		model.isImage = true
 		self.contents.append(model)
 		
-//		for _ in 0..<2 {
-//			model.medias.append("test")
-//		}
+		for _ in 0..<1 {
+			model.medias.append("test")
+		}
 		
 		for _ in 1..<20 {
 			self.contents.append(model.copy() as! SWContentModel)
@@ -36,6 +41,8 @@ class SWContentController: NSObject, UICollectionViewDelegate, UICollectionViewD
 	// MARK: - fetch
 	func fetch(block: ((_ block: Bool) -> Void)?) {
 		self.callback = block
+		self.contents.removeAll()
+		self.sw_setup()
 		if self.callback != nil {
 			self.callback!(true)
 		}

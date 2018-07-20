@@ -20,7 +20,7 @@ extension UIImage {
 		
 		backgroundColor?.setFill()
 		
-		let radius = (min(size.width, size.height)-2.0)/2.0;
+		let radius = (min(size.width, size.height)-2.0)/2.0
 		content?.addArc(center: CGPoint.init(x: radius, y: radius), radius: radius, startAngle: 0, endAngle: CGFloat(2*Double.pi), clockwise: false)
 		content?.fillPath()
 		
@@ -57,6 +57,27 @@ extension UIImage {
 		let fileMgr = FileManager.default
 		let writed = fileMgr.createFile(atPath: mPath.appendingPathComponent(path!), contents: data, attributes: nil)
 		Log.debug("writed[\(writed)]: \(path!)")
+	}
+	
+	func clipToCircle() -> UIImage {
+		let size: CGSize = self.size
+		let dimmer = (min(size.width, size.height)-2.0)
+		let frame = CGRect.init(x: 1, y: 1, width: dimmer, height: dimmer)
+		
+		UIGraphicsBeginImageContextWithOptions(size, false, sw_screenScale)
+		
+		let context = UIGraphicsGetCurrentContext()
+		
+		context?.addEllipse(in: frame)
+		context?.clip()
+		
+		self.draw(in: frame)
+		
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		
+		UIGraphicsEndImageContext()
+		
+		return image!
 	}
 }
 
