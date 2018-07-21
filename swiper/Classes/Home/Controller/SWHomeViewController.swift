@@ -61,8 +61,7 @@ class SWHomeViewController: SWBaseViewController, SWUserDelegate {
 	
 	func sw_setupLeftButton() -> Void {
 		
-		let leftButton = UIButton.create(withImage: UIImage.image(withFileName: Overall.user.avatar!), highlight: nil, target: self, action: #selector(self.sw_didTapUserAction(sender:)))
-		leftButton.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 25.0, height: 25.0))
+		let leftButton = UIButton.create(withImage: UIImage.image(withFileName: Overall.user.avatar!)?.image(resize: CGSize.init(width: 25, height: 25)), highlight: nil, target: self, action: #selector(self.sw_didTapUserAction(sender:)))
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
 	}
 	

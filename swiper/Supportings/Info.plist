@@ -49,5 +49,7 @@
 	<string>Use for shot your new photo</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Fetch photo for edit avatar</string>
+	<key>CFBundleIconFile</key>
+	<string>icon.png</string>
 </dict>
 </plist>

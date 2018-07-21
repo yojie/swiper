@@ -51,6 +51,18 @@ extension UIImage {
 		return image
 	}
 	
+	func image(resize size: CGSize) -> UIImage {
+		UIGraphicsBeginImageContextWithOptions(size, false, sw_screenScale);
+		
+		self.draw(in: .init(origin: CGPoint.zero, size: size));
+		
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		
+		UIGraphicsEndImageContext()
+		
+		return image!
+	}
+	
 	func save(toPath path: String?) -> Void {
 		let mPath = NSMutableString.init(string: Overall.imagePath)
 		let data: Data = UIImagePNGRepresentation(self)!
